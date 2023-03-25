@@ -11,6 +11,12 @@ $thisCategory = mysqli_fetch_assoc($result);
 if ($thisCategory == null) {
     header('location: /');
 }
+$sql = 'SELECT * FROM `restaurant` WHERE `restaurant`.`_category` = ' . $categoryId;
+$result = $conn->query($sql);
+$restaurantList = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $restaurantList[] = $row;
+}
 $sql = 'SELECT * FROM `category` LIMIT 10';
 $result = $conn->query($sql);
 $categoryList = [];
@@ -47,6 +53,19 @@ $conn->close();
         <?php endif; ?>
         <span class="section-title"><?=$thisCategory['name']?></span>
         <div class="restaurant-list">
+            <?php foreach ($restaurantList as $restaurant): ?>
+            <a href="/restaurant.php?id=<?=$restaurant['id']?>" class="restaurant-card">
+                <div class="restaurant-card-image">
+                    <img src="<?=$restaurant['image']?>" alt="<?=$restaurant['name']?>" />
+                </div>
+                <div class="restaurant-card-content">
+                    <span class="restaurant-card-title"><?=$restaurant['name']?></span>
+                    <div class="restaurant-card-text">
+                        <?=$restaurant['description']?>
+                    </div>
+                </div>
+            </a>
+            <?php endforeach; ?>
         </div>
     </div>
 </body>
