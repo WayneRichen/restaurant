@@ -12,7 +12,7 @@
 ### restaurant - 餐廳資料表
 欄位|id*|name|_category|description|image
 |--|--|--|--|--|--|
-類型|int|varchar|int|text|text|
+類型|int|varchar|int|text|varchar|
 說明|餐廳索引，主鍵|餐廳名稱|分類，category 外鍵|描述|圖片|
 |範例|1|築間幸福鍋物|1|築間幸福鍋物唯一擁有自有海產拱應鏈，獨創招牌石頭鍋湯底風味令人回味無窮，以高性價比餐點滿足顧客需求。|/image/jhujian.png|
 
