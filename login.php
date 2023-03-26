@@ -1,62 +1,25 @@
 <?php
-session_start();
-include("db.php");
-$sql = 'SELECT * FROM `category` LIMIT 10';
-$result = $conn->query($sql);
-$categoryList = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $categoryList[] = $row;
+session_start(); // 啟動 session
+include("db.php"); // 匯入資料庫連線設定
+
+$email = $_POST['email']; // 獲取表單提交的 Email
+$password = $_POST['password']; // 獲取表單提交的密碼
+
+$email = mysqli_real_escape_string($conn, $email); // 使用 mysqli_real_escape_string 防止 SQL 注入攻擊，對 $email 進行處理
+
+// 構建查詢語句，查詢是否有匹配的使用者名稱和密碼
+$sql = "SELECT * FROM `user` WHERE `user`.`email` = '$email' AND `user`.`password` = '$password';";
+$result = $conn->query($sql); // 執行 SQL 查詢
+
+// 檢查查詢結果是否有匹配的用戶
+if ($result->num_rows > 0) { // 如果查詢到匹配的用戶
+    $row = $result->fetch_assoc(); // 獲取查詢結果的第一行作為陣列
+    $_SESSION["id"] = $row['id']; // 把用戶 ID 儲存在 session 中
+    $_SESSION["name"] = $row['name']; // 把用戶名稱儲存在 session 中
+    $_SESSION["email"] = $row['email']; // 把用戶 Email 儲存在 session 中
+    header('location: /index.php'); // 跳轉到首頁
+} else {
+    echo "<script>alert('帳號密碼錯誤');window.location.replace('login.html');</script>"; // 提示帳號或密碼錯誤，並跳轉到登入頁面
 }
-$conn->close();
+$conn->close(); // 關閉資料庫連線
 ?>
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登入 - 餐廳推薦系統</title>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="login.css">
-</head>
-<body>
-    <header class="header">
-        <h1 class="logo"><a href="/">餐廳推薦系統</a></h1>
-        <ul class="main-nav">
-            <li><a href="/login.php">登入</a></li>
-            <li><a href="/register.php">註冊</a></li>
-        </ul>
-    </header>
-    <div class="main">
-        <div class="container" id="container">
-            <div class="form-container sign-in-container">
-                <form action="#">
-                    <h1>Sign in</h1>
-                    <span>or use your account</span>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <a href="#">Forgot your password?</a>
-                    <button>Sign In</button>
-                </form>
-            </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-left">
-                        <h1>Welcome Back!</h1>
-                        <p>To keep connected with us please login with your personal info</p>
-                        <button class="ghost" id="signIn">Sign In</button>
-                    </div>
-                    <div class="overlay-panel overlay-right">
-                        <h1>Hello, Friend!</h1>
-                        <p>Enter your personal details and start journey with us</p>
-                        <button class="ghost" id="signUp">Sign Up</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-<footer>
-    &copy; <script>document.write(new Date().getFullYear())</script> 餐廳推薦系統 - All Rights Reserved.
-</footer>
-</html>

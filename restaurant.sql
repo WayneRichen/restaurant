@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： mariadb
--- 產生時間： 2023 年 03 月 25 日 09:53
+-- 產生時間： 2023 年 03 月 26 日 12:13
 -- 伺服器版本： 10.7.4-MariaDB-1:10.7.4+maria~focal
 -- PHP 版本： 8.1.17
 
@@ -106,7 +106,9 @@ INSERT INTO `restaurant` (`id`, `name`, `_category`, `description`, `image`) VAL
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `name` int(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -141,7 +143,8 @@ ALTER TABLE `restaurant`
 -- 資料表索引 `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- 在傾印的資料表使用自動遞增(AUTO_INCREMENT)

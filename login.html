@@ -1,0 +1,45 @@
+<!DOCTYPE html> <!-- 告訴瀏覽器使用哪個 HTML 版本來渲染這個頁面 --> 
+<html lang="zh-Hant"> <!-- HTML 文件的開始標籤，指定網頁語言為繁體中文 --> 
+<head> 
+    <meta charset="UTF-8"> <!-- 宣告網頁使用的字元集編碼方式 --> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 宣告網頁使用哪個版本的 Internet Explorer 來渲染此頁面 --> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 宣告網頁檢視區域的大小及縮放比例 --> 
+    <title>登入 - 餐廳推薦系統</title> <!-- 網頁標題 --> 
+    <link rel="stylesheet" href="common.css"> <!-- 匯入共用 CSS 樣式表 --> 
+    <link rel="stylesheet" href="login.css"> <!-- 匯入登入頁面的 CSS 樣式表 --> 
+</head> 
+<body> 
+    <header class="header"> <!-- 網頁標頭區塊 --> 
+        <h1 class="logo"><a href="/index.php">餐廳推薦系統</a></h1> <!-- 頁面標題 --> 
+        <ul class="main-nav"> 
+            <li><a href="/login.html">登入</a></li> <!-- 登入頁面連結 --> 
+            <li><a href="/register.html">註冊</a></li> <!-- 註冊頁面連結 --> 
+        </ul>
+    </header> 
+    <div class="login-main"> 
+        <div class="container" id="container"> 
+            <div class="form-container sign-in-container"> <!-- 登入表單區塊 --> 
+                <form action="/login.php" method="POST"> <!-- 登入表單，提交到 login.php 進行處理 --> 
+                    <h1>登入</h1> <!-- 登入表單標題 --> 
+                    <input type="email" name="email" placeholder="Email" required/> <!-- 輸入 Email 的欄位 --> 
+                    <input type="password" name="password" placeholder="密碼" required/> <!-- 輸入密碼的欄位 --> 
+                    <button type="submit">登入</button>  <!-- 提交表單的按鈕 --> 
+                </form>  <!-- 結束表單 -->
+            </div>
+            <div class="overlay-container"> <!-- 用於顯示沒有帳號的提示和註冊按鈕 -->
+                <div class="overlay">
+                    <div class="overlay-panel overlay-right">
+                        <h1>沒有帳號？</h1> <!-- 標題 -->
+                        <p>從這邊註冊一個帳號</p> <!-- 文字說明 -->
+                        <a href="/register.html"><button class="ghost" id="signUp">註冊</button></a> <!-- 註冊按鈕 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- 網頁頁尾 -->
+<footer>
+    &copy; <script>document.write(new Date().getFullYear())</script> 餐廳推薦系統 - All Rights Reserved. <!-- 頁尾宣告 -->
+</footer>
+</html>

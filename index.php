@@ -36,10 +36,15 @@ $conn->close();
 </head>
 <body> <!-- 文件的 body 部分 -->
     <header class="header"> <!-- 網頁 header -->
-        <h1 class="logo"><a href="/">餐廳推薦系統</a></h1> <!-- 網頁標題 -->
+        <h1 class="logo"><a href="/index.php">餐廳推薦系統</a></h1> <!-- 網頁標題 -->
         <ul class="main-nav"> <!-- 網頁主導覽列 -->
-            <li><a href="/login.php">登入</a></li> <!-- 登入按鈕 -->
-            <li><a href="/register.php">註冊</a></li> <!-- 註冊按鈕 -->
+            <?php if (!empty($_SESSION['name'])): ?> <!-- 這是一個PHP的條件語句，用來檢查是否有使用者登入網站。如果有，就會顯示使用者的名字以及登出按鈕，否則就會顯示登入和註冊按鈕。 -->
+            <li><a>Hi! <?= $_SESSION['name'] ?></a></li> <!-- 這是一個PHP的短碼，用來顯示使用者的名字。< ?= ?>是一種簡寫，相當於< ?php echo ?>。 -->
+            <li><a href="/logout.php">登出</a></li> <!-- 這是一個列表項，用來顯示登出按鈕。<a>是一個超連結標籤，用來將按鈕與登出功能連結起來。 -->
+            <?php else: ?>
+            <li><a href="/login.html">登入</a></li> <!-- 這是一個列表項，用來顯示登入按鈕。<a>標籤的href屬性指定了按鈕要前往的網頁。 -->
+            <li><a href="/register.html">註冊</a></li> <!-- 這是一個列表項，用來顯示註冊按鈕。<a>標籤的href屬性指定了按鈕要前往的網頁。 -->
+            <?php endif; ?> <!-- 這是一個PHP的結束語句，用來結束if條件語句。 -->
         </ul>
     </header>
     <!-- 網頁主要內容 -->
