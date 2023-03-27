@@ -1,33 +1,33 @@
 <?php
-session_start();
-include("db.php");
-$restaurantId = $_GET['id'] ?? null;
-if ($restaurantId == null) {
+session_start(); // 開始 PHP Session
+include("db.php"); // 匯入資料庫連線檔案
+$restaurantId = $_GET['id'] ?? null; // 從 GET 取得餐廳 ID
+if ($restaurantId == null) { // 如果餐廳 ID 是 null，將網頁導向首頁
     header('location: /index.php');
 }
-$sql = 'SELECT * FROM `restaurant` WHERE `restaurant`.`id` = ' . $restaurantId;
-$result = $conn->query($sql);
-$restaurant = mysqli_fetch_assoc($result);
-if ($restaurant == null) {
+$sql = 'SELECT * FROM `restaurant` WHERE `restaurant`.`id` = ' . $restaurantId; // 查詢資料庫取得該餐廳的詳細資訊
+$result = $conn->query($sql); // 執行查詢
+$restaurant = mysqli_fetch_assoc($result); // 將查詢結果轉換成陣列
+if ($restaurant == null) { // 如果查詢結果為 null，將網頁導向首頁
     header('location: /index.php');
 }
-$sql = 'SELECT * FROM `category` LIMIT 10';
-$result = $conn->query($sql);
-$categoryList = [];
-while ($row = mysqli_fetch_assoc($result)) {
+$sql = 'SELECT * FROM `category` LIMIT 10'; // 查詢資料庫取得前 10 個分類
+$result = $conn->query($sql); // 執行查詢
+$categoryList = []; // 儲存分類資訊的陣列
+while ($row = mysqli_fetch_assoc($result)) { // 將查詢結果放入陣列
     $categoryList[] = $row;
 }
-$conn->close();
+$conn->close(); // 關閉資料庫連線
 ?>
-<!DOCTYPE html>
-<html lang="zh-Hant">
+<!DOCTYPE html> <!-- 宣告文件類型為 HTML5 -->
+<html lang="zh-Hant"> <!-- 設定語言為繁體中文 -->
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?=$restaurant['name']?> - 餐廳推薦系統</title>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8"> <!-- 設定文件編碼為 UTF-8 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 設定瀏覽器相容性 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 設定裝置寬度及縮放比例 -->
+    <title><?=$restaurant['name']?> - 餐廳推薦系統</title> <!-- 設定網頁標題，使用 PHP 印出餐廳名稱 -->
+    <link rel="stylesheet" href="common.css"> <!-- 引入共用的 CSS 樣式表 -->
+    <link rel="stylesheet" href="index.css"> <!-- 引入首頁的 CSS 樣式表 -->
 </head>
 <body>
     <header class="header"> <!-- 網頁 header -->
@@ -42,20 +42,20 @@ $conn->close();
             <?php endif; ?> <!-- 這是一個PHP的結束語句，用來結束if條件語句。 -->
         </ul>
     </header>
-    <div class="main">
-        <?php if ($categoryList): ?>
-        <div class="category-list">
-            <?php foreach ($categoryList as $category): ?>
-            <a href="/category.php?id=<?=$category['id']?>" class="category"><?=$category['name']?></a>
-            <?php endforeach; ?>
+    <div class="main"> <!-- 設定主要區塊的樣式 -->
+        <?php if ($categoryList): ?> <!-- 判斷是否有分類清單 -->
+        <div class="category-list"> <!-- 設定分類清單區塊的樣式 -->
+            <?php foreach ($categoryList as $category): ?> <!-- 使用迴圈輸出分類清單 -->
+            <a href="/category.php?id=<?=$category['id']?>" class="category"><?=$category['name']?></a> <!-- 設定分類的超連結及名稱 -->
+            <?php endforeach; ?> <!-- 迴圈結束 -->
         </div>
-        <?php endif; ?>
-        <span class="section-title"><?=$restaurant['name']?></span>
-        <div class="restaurant-list">
+        <?php endif; ?> <!-- 判斷結束 -->
+        <span class="section-title"><?=$restaurant['name']?></span> <!-- 設定餐廳名稱的標題 -->
+        <div class="restaurant-list"> <!-- 設定餐廳清單區塊的樣式 -->
         </div>
     </div>
-</body>
+</body> <!-- HTML 文件主要內容結束 -->
 <footer>
-    &copy; <script>document.write(new Date().getFullYear())</script> 餐廳推薦系統 - All Rights Reserved.
+    &copy; <script>document.write(new Date().getFullYear())</script> 餐廳推薦系統 - All Rights Reserved. <!-- 設定頁尾版權資訊 -->
 </footer>
-</html>
+</html> <!-- HTML 文件結束 -->

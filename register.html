@@ -1,45 +1,46 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>註冊 - 餐廳推薦系統</title>
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="login.css">
+<!DOCTYPE html> <!-- 文件類型聲明為 HTML -->
+<html lang="zh-Hant"> <!-- 設定語言為繁體中文 -->
+<head> <!-- 文件頭部 -->
+    <meta charset="UTF-8"> <!-- 指定字元編碼為 UTF-8 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 指定渲染模式為 IE 最新版本 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 設定頁面縮放及初始大小 -->
+    <title>註冊 - 餐廳推薦系統</title> <!-- 頁面標題 -->
+    <link rel="stylesheet" href="common.css"> <!-- 引用 common.css 樣式表 -->
+    <link rel="stylesheet" href="login.css"> <!-- 引用 login.css 樣式表 -->
 </head>
 <body>
-    <header class="header">
-        <h1 class="logo"><a href="/index.php">餐廳推薦系統</a></h1>
-        <ul class="main-nav">
-            <li><a href="/login.html">登入</a></li>
-            <li><a href="/register.html">註冊</a></li>
+    <header class="header"> <!-- 頁面頂部 -->
+        <h1 class="logo"><a href="/index.php">餐廳推薦系統</a></h1> <!-- 網站標題 -->
+        <ul class="main-nav"> <!-- 主導覽列 -->
+            <li><a href="/login.html">登入</a></li> <!-- 登入頁面連結 -->
+            <li><a href="/register.html">註冊</a></li> <!-- 註冊頁面連結 -->
         </ul>
     </header>
-    <div class="login-main">
-        <div class="container right-panel-active" id="container">
-            <div class="form-container sign-up-container">
-                <form action="/register.php" method="POST">
-                    <h1>帳號註冊</h1>
-                    <input type="text" name="name" placeholder="姓名" required/>
-                    <input type="email" name="email" placeholder="Email" required/>
-                    <input type="password" name="password" placeholder="密碼" required/>
-                    <button>註冊</button>
+    <div class="login-main"> <!-- 登入主要區塊 -->
+        <div class="container right-panel-active" id="container"> <!-- 註冊區塊 -->
+            <div class="form-container sign-up-container"> <!-- 註冊表單 -->
+                <form action="/register.php" method="POST"> <!-- 註冊表單提交地址和方法 -->
+                    <h1>帳號註冊</h1> <!-- 標題 -->
+                    <input type="text" name="name" placeholder="姓名" required/> <!-- 姓名輸入欄位 -->
+                    <input type="email" name="email" placeholder="Email" required/> <!-- 電子郵件輸入欄位 -->
+                    <input type="password" name="password" placeholder="密碼" required/> <!-- 密碼輸入欄位 -->
+                    <button>註冊</button> <!-- 提交按鈕 -->
                 </form>
             </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-left">
-                        <h1>已有帳號？</h1>
-                        <p>按這邊立即登入！</p>
-                        <a href="/login.html"><button class="ghost" id="signIn">登入</button></a>
+            <div class="overlay-container"> <!-- 疊加容器 -->
+                <div class="overlay"> <!-- 疊加層 -->
+                    <div class="overlay-panel overlay-left"> <!-- 左側疊加層 -->
+                        <h1>已有帳號？</h1> <!-- 標題 -->
+                        <p>按這邊立即登入！</p> <!-- 提示 -->
+                        <a href="/login.html"><button class="ghost" id="signIn">登入</button></a> <!-- 登入按鈕 -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
+<!-- 網頁頁尾 -->
 <footer>
-    &copy; <script>document.write(new Date().getFullYear())</script> 餐廳推薦系統 - All Rights Reserved.
+    &copy; <script>document.write(new Date().getFullYear())</script> 餐廳推薦系統 - All Rights Reserved. <!-- 頁尾宣告 -->
 </footer>
 </html>
