@@ -71,3 +71,61 @@
 .restaurant-card-text {
     display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
 }
+
+.restaurant-content {
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: 720px;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.restaurant-content > img {
+    width: 100%;
+}
+
+.restaurant-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2a2a2a;
+}
+
+.comments-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2a2a2a;
+}
+
+.comment {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.comment > span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.comment-submit {
+    margin-top: 1em;
+    display: flex;
+    justify-content: end;
+}
+
+.comment-submit > button {
+    padding: .5em 2em .5em 2em;
+    border-radius: .5em;
+    border-width: .2px;
+    background-color: #34495e;
+    color: white;
+    font-size: 16px;
+}
+
+.new-comment > textarea {
+    padding: .5em;
+    font-size: 18px;
+    margin-top: 1em;
+    width: 100%;
+    border-radius: .5em;
+}
