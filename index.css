@@ -85,6 +85,10 @@
     width: 100%;
 }
 
+.restaurant-content > p > img {
+    width: 100%;
+}
+
 .restaurant-name {
     font-size: 32px;
     font-weight: bold;
@@ -128,4 +132,23 @@
     margin-top: 1em;
     width: 100%;
     border-radius: .5em;
+}
+
+.float{
+    position: fixed;
+    width: 100px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #5c5c5c;
+    color:#FFF;
+    border-radius: 3px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    padding: 16px 0;
+    transition: all .3s ease-in-out;
+}
+
+.float:hover{
+    background-color: #b89760;
 }

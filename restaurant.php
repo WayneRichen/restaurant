@@ -89,6 +89,9 @@ $conn->close(); // 關閉資料庫連線
             </div>
         </div> <!-- 結束div容器 -->
     </div>
+    <a href="/reservation.php?id=<?=$restaurant['id']?>" class="float"><!-- 連結至餐廳訂位頁面的按鈕，使用 PHP 的 $restaurant['id'] 變數取得餐廳 ID，並將其傳遞至 reservation.php 頁面進行處理，class="float" 則是為了讓按鈕浮動於畫面右下角。 -->
+        立即訂位
+    </a>
 </body> <!-- HTML 文件主要內容結束 -->
 <footer>
     &copy; <script>document.write(new Date().getFullYear())</script> 餐廳推薦系統 - All Rights Reserved. <!-- 設定頁尾版權資訊 -->
