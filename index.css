@@ -152,3 +152,9 @@
 .float:hover{
     background-color: #b89760;
 }
+
+.datetime {
+    border-radius: 5px;
+    border-width: 1px;
+    font-size: 16px;
+}
