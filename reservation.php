@@ -1,6 +1,9 @@
 <?php
 session_start(); // 開始 PHP Session
 include("db.php"); // 匯入資料庫連線檔案
+if (empty($_SESSION['id'])) { // 檢查 session 有沒有使用者 id
+    header('location: /login.html'); // 沒有的話跳到登入頁面
+}
 $restaurantId = $_GET['id'] ?? null; // 從 GET 取得餐廳 ID
 if ($restaurantId == null) { // 如果餐廳 ID 是 null，將網頁導向首頁
     header('location: /index.php');

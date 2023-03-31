@@ -21,6 +21,8 @@ $restaurantList = [];
 while ($row = mysqli_fetch_assoc($result)) {
     $restaurantList[] = $row;
 }
+$random = $restaurantList; // 複製餐廳列表到 $random 變數
+shuffle($random); // 隨機排序 $random 餐廳列表
 // 關閉資料庫連線
 $conn->close();
 ?>
@@ -56,8 +58,19 @@ $conn->close();
             <?php endforeach; ?>
         </div>
         <?php endif; ?>
-        <?php if ($restaurantList): ?> <!-- 如果有餐廳清單，顯示餐廳推薦區塊 -->
         <span class="section-title">推薦餐廳</span>
+        <div class="random-reataurant">
+            <?php for ($i = 0; $i < min(count($random), 4); $i++): ?> <!-- 從隨機餐廳列表中取出4間餐廳顯示 -->
+            <a href="/restaurant.php?id=<?=$random[$i]['id']?>" class="random-restaurant-card"> <!-- 餐廳卡片的超連結 -->
+                <div class="random-restaurant-card-image">
+                    <img src="<?=$random[$i]['image']?>" alt="<?=$random[$i]['name']?>" /> <!-- 餐廳圖片 -->
+                </div>
+                <span class="restaurant-card-title"><?=$random[$i]['name']?></span> <!-- 餐廳名稱 -->
+                <span>⭐️ <?=$random[$i]['rank']?></span> <!-- 餐廳評分 -->
+            </a>
+            <?php endfor; ?> <!-- 結束 for 迴圈 -->
+        </div>
+        <?php if ($restaurantList): ?> <!-- 如果有餐廳清單，顯示餐廳推薦區塊 -->
         <div class="restaurant-list"> <!-- 餐廳列表區塊 -->
             <?php foreach ($restaurantList as $restaurant): ?> <!-- 利用迴圈產生餐廳卡片 -->
             <a href="/restaurant.php?id=<?=$restaurant['id']?>" class="restaurant-card">  <!-- 餐廳卡片的超連結 -->
@@ -68,6 +81,9 @@ $conn->close();
                     <span class="restaurant-card-title"><?=$restaurant['name']?></span> <!-- 餐廳卡片的標題 -->
                     <div class="restaurant-card-text"> <!-- 餐廳卡片的文字內容 -->
                         <?=$restaurant['description']?> <!-- 餐廳的描述 -->
+                    </div>
+                    <div class="restaurant-rank">
+                        <span>⭐️ <?=$restaurant['rank']?></span> <!-- 餐廳評分 -->
                     </div>
                 </div>
             </a>

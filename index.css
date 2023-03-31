@@ -27,6 +27,30 @@
     margin: 1rem;
 }
 
+.random-reataurant {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.random-restaurant-card {
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 1rem;
+}
+
+.random-restaurant-card-image {
+    height: 150px;
+}
+
+.random-restaurant-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .restaurant-list {
     display: flex;
     flex-wrap: wrap;
@@ -57,7 +81,7 @@
 }
 
 .restaurant-card-content {
-    padding: 0px 4px 32px 6px;
+    padding: 0px 4px 4px 6px;
     margin: 8px 4px 4px 6px;
     max-height: 290px;
     overflow: hidden;
@@ -87,6 +111,12 @@
 
 .restaurant-content > p > img {
     width: 100%;
+}
+
+.restaurant-rank {
+    display: flex;
+    justify-content: end;
+    font-weight: bold;
 }
 
 .restaurant-name {
