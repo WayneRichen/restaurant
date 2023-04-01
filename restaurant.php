@@ -61,6 +61,7 @@ $conn->close(); // 關閉資料庫連線
             <img src="<?=$restaurant['image']?>" /> <!-- 顯示餐廳圖片，圖片來源為$restaurant['image'] -->
             <?php endif; ?> <!-- 結束if語句 -->
             <h1 class="restaurant-name"><?=$restaurant['name']?></h1> <!-- 顯示餐廳名稱，名稱來源為$restaurant['name']，使用class為"restaurant-name"的樣式 -->
+            <span>評分：<?=$restaurant['rank']?></span>
             <p><?=$restaurant['description']?></p> <!-- 顯示餐廳描述，描述來源為$restaurant['description'] -->
             <div class="comments">
                 <h2 class="comments-title">評論</h2>
